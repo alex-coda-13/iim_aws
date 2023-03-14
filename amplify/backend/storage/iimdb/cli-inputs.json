@@ -1,0 +1,10 @@
+{
+  "resourceName": "iimdb",
+  "tableName": "iimdb",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

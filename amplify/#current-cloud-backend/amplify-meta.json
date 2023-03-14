@@ -1,0 +1,198 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-iim-dev-100438-authRole",
+      "UnauthRoleArn": "arn:aws:iam::462272706531:role/amplify-iim-dev-100438-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::462272706531:role/amplify-iim-dev-100438-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-iim-dev-100438-deployment",
+      "UnauthRoleName": "amplify-iim-dev-100438-unauthRole",
+      "StackName": "amplify-iim-dev-100438",
+      "StackId": "arn:aws:cloudformation:eu-west-1:462272706531:stack/amplify-iim-dev-100438/16dce9d0-c17e-11ed-bd8a-0a2c69e7cb7d",
+      "AmplifyAppId": "d1c9fbjcu93va2"
+    }
+  },
+  "storage": {
+    "iimdb": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-iim-dev-100438-deployment/amplify-cfn-templates/storage/iimdb-cloudformation-template.json",
+        "logicalId": "storageiimdb"
+      },
+      "lastPushTimeStamp": "2023-03-13T15:39:08.284Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "eu-west-1",
+        "Arn": "arn:aws:dynamodb:eu-west-1:462272706531:table/iimdb-dev",
+        "StreamArn": "arn:aws:dynamodb:eu-west-1:462272706531:table/iimdb-dev/stream/2023-03-13T09:10:27.781",
+        "PartitionKeyType": "S",
+        "Name": "iimdb-dev"
+      },
+      "lastPushDirHash": "BwroJ/Zz4o09UXZkeQYgqcO2whw="
+    },
+    "iimdb2": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-iim-dev-100438-deployment/amplify-cfn-templates/storage/iimdb2-cloudformation-template.json",
+        "logicalId": "storageiimdb2"
+      },
+      "lastPushTimeStamp": "2023-03-13T15:39:08.286Z",
+      "output": {
+        "PartitionKeyName": "id1",
+        "SortKeyName": "id2",
+        "SortKeyType": "S",
+        "Region": "eu-west-1",
+        "Arn": "arn:aws:dynamodb:eu-west-1:462272706531:table/iimdb2-dev",
+        "StreamArn": "arn:aws:dynamodb:eu-west-1:462272706531:table/iimdb2-dev/stream/2023-03-13T10:37:15.042",
+        "PartitionKeyType": "S",
+        "Name": "iimdb2-dev"
+      },
+      "lastPushDirHash": "88fmkbb4erL+BAMVJx0LyYDVlTw="
+    }
+  },
+  "function": {
+    "iimtest1": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "iimdb",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "iimdb2",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ],
+      "lastBuildTimeStamp": "2023-03-13T14:21:39.009Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-03-13T14:21:44.454Z",
+      "distZipFilename": "iimtest1-396348355978532b6649-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-iim-dev-100438-deployment",
+        "s3Key": "amplify-builds/iimtest1-396348355978532b6649-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-iim-dev-100438-deployment/amplify-cfn-templates/function/iimtest1-cloudformation-template.json",
+        "logicalId": "functioniimtest1"
+      },
+      "lastPushTimeStamp": "2023-03-13T15:39:08.288Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::462272706531:role/iimLambdaRoleb7caa835-dev",
+        "Region": "eu-west-1",
+        "Arn": "arn:aws:lambda:eu-west-1:462272706531:function:iimtest1-dev",
+        "Name": "iimtest1-dev",
+        "LambdaExecutionRole": "iimLambdaRoleb7caa835-dev"
+      },
+      "lastPushDirHash": "vxW4Qm9/Xe2t/G+9k32I58UpqSo=",
+      "lastDevBuildTimeStamp": "2023-03-13T12:52:40.514Z"
+    },
+    "iimtest2": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "iimutils",
+          "attributes": [
+            "Arn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "iimdb2",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ],
+      "lastDevBuildTimeStamp": "2023-03-13T14:17:40.456Z",
+      "lastBuildType": "PROD",
+      "lastBuildTimeStamp": "2023-03-13T15:36:56.558Z",
+      "lastPackageTimeStamp": "2023-03-13T15:37:02.377Z",
+      "distZipFilename": "iimtest2-6866586a4a6e61344941-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-iim-dev-100438-deployment",
+        "s3Key": "amplify-builds/iimtest2-6866586a4a6e61344941-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-iim-dev-100438-deployment/amplify-cfn-templates/function/iimtest2-cloudformation-template.json",
+        "logicalId": "functioniimtest2"
+      },
+      "lastPushTimeStamp": "2023-03-13T15:39:08.837Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::462272706531:role/iimLambdaRoleded46a1a-dev",
+        "Region": "eu-west-1",
+        "Arn": "arn:aws:lambda:eu-west-1:462272706531:function:iimtest2-dev",
+        "Name": "iimtest2-dev",
+        "LambdaExecutionRole": "iimLambdaRoleded46a1a-dev"
+      },
+      "lastPushDirHash": "DSQhbOI2Sydq+aEfsFosspK5YtY="
+    },
+    "iimutils": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true,
+      "lastBuildTimeStamp": "2023-03-13T15:36:57.897Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-03-13T15:37:00.156Z",
+      "distZipFilename": "iimutils-LambdaLayerVersione3c17906-build.zip",
+      "latestPushedVersionHash": "925061b0490bf68e4b4d7d2a389e2fa65ed699232d54b523754b25c30111ac63",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-iim-dev-100438-deployment",
+        "s3Key": "amplify-builds/iimutils-LambdaLayerVersione3c17906-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-iim-dev-100438-deployment/amplify-cfn-templates/function/iimutils-awscloudformation-template.json",
+        "logicalId": "functioniimutils"
+      },
+      "lastPushTimeStamp": "2023-03-13T15:39:08.837Z",
+      "output": {
+        "Arn": "arn:aws:lambda:eu-west-1:462272706531:layer:iimutils-dev:1"
+      }
+    }
+  },
+  "api": {
+    "iim": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "iimtest2",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-iim-dev-100438-deployment/amplify-cfn-templates/api/iim-cloudformation-template.json",
+        "logicalId": "apiiim"
+      },
+      "lastPushTimeStamp": "2023-03-13T15:39:08.293Z",
+      "output": {
+        "ApiName": "iim",
+        "RootUrl": "https://csxw638gme.execute-api.eu-west-1.amazonaws.com/dev",
+        "ApiId": "csxw638gme"
+      },
+      "lastPushDirHash": "WmflTYOSPNPm/JzH1fUIMyr+Fu8="
+    }
+  }
+}

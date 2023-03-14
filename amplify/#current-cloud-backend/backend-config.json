@@ -1,0 +1,133 @@
+{
+  "api": {
+    "iim": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "iimtest2"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "iimtest1": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "iimdb"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "iimdb2"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "iimtest2": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "iimutils"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "iimdb2"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "iimutils": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_iimtest1_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iimtest1"
+        }
+      ]
+    },
+    "AMPLIFY_function_iimtest1_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iimtest1"
+        }
+      ]
+    },
+    "AMPLIFY_function_iimtest2_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iimtest2"
+        }
+      ]
+    },
+    "AMPLIFY_function_iimtest2_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iimtest2"
+        }
+      ]
+    },
+    "AMPLIFY_function_iimutils_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iimutils"
+        }
+      ]
+    },
+    "AMPLIFY_function_iimutils_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iimutils"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "iimdb": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "iimdb2": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

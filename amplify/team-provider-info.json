@@ -1,0 +1,38 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-iim-dev-100438-authRole",
+      "UnauthRoleArn": "arn:aws:iam::462272706531:role/amplify-iim-dev-100438-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::462272706531:role/amplify-iim-dev-100438-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-iim-dev-100438-deployment",
+      "UnauthRoleName": "amplify-iim-dev-100438-unauthRole",
+      "StackName": "amplify-iim-dev-100438",
+      "StackId": "arn:aws:cloudformation:eu-west-1:462272706531:stack/amplify-iim-dev-100438/16dce9d0-c17e-11ed-bd8a-0a2c69e7cb7d",
+      "AmplifyAppId": "d1c9fbjcu93va2"
+    },
+    "categories": {
+      "storage": {
+        "iimdb": {},
+        "iimdb2": {}
+      },
+      "function": {
+        "iimtest1": {
+          "deploymentBucketName": "amplify-iim-dev-100438-deployment",
+          "s3Key": "amplify-builds/iimtest1-396348355978532b6649-build.zip"
+        },
+        "iimtest2": {
+          "deploymentBucketName": "amplify-iim-dev-100438-deployment",
+          "s3Key": "amplify-builds/iimtest2-6866586a4a6e61344941-build.zip"
+        },
+        "iimutils": {
+          "deploymentBucketName": "amplify-iim-dev-100438-deployment",
+          "s3Key": "amplify-builds/iimutils-LambdaLayerVersione3c17906-build.zip"
+        }
+      },
+      "api": {
+        "iim": {}
+      }
+    }
+  }
+}

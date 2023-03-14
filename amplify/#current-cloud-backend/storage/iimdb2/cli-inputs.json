@@ -1,0 +1,14 @@
+{
+  "resourceName": "iimdb2",
+  "tableName": "iimdb2",
+  "partitionKey": {
+    "fieldName": "id1",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "id2",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

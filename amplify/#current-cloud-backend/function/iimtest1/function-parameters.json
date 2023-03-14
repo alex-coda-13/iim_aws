@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "storage": {
+      "iimdb": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "iimdb2": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
